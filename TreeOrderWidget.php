@@ -159,7 +159,7 @@ class TreeOrderWidget extends InputWidget
 	public function run()
 	{
 		$parentChoices = ($this->isCanMakeRoot ? [TreeOrderWidget::MAKE_A_TREE => 'Make a tree'] : []) +
-			TreeArrayHelper::treeMap($this->tree, $this->identityAttribute, $this->nameAttribute, null, null, $this->model->depthAttribute);
+			TreeArrayHelper::treeMap($this->tree, $this->model->depthAttribute, $this->identityAttribute, $this->nameAttribute);
 		$parentValue = $this->hasModel() ? $this->model->{$this->model->parentAttribute} : ArrayHelper::getValue($this->value, 'Parent', null);
 
 		$orderChoices = [
