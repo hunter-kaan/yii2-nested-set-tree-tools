@@ -1,0 +1,32 @@
+{
+  "name": "valiant/yii2-nested-set-tree-tools",
+  "type": "yii2-extension",
+  "description": "Yii2 nested set tree tools",
+  "keywords": [
+    "yii2",
+    "nested sets",
+    "table tree view",
+    "tree widget"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/one-more-developer/yii2-nested-set-tree-tools",
+  "authors": [
+    {
+      "name": "Igor Prokofev",
+      "email": "mr.igor.prokofev@gmail.com",
+      "homepage": "https://github.com/one-more-developer",
+      "role": "Developer"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.4.0",
+    "yiisoft/yii2": "*",
+    "creocoder/yii2-nested-sets": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "valiant\\Tree\\NestedSet\\": "./"
+    }
+  }
+}

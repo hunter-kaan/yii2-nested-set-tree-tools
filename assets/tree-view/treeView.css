@@ -1,0 +1,24 @@
+a.tree-anchor {
+  cursor: pointer;
+  width: 30px;
+  text-align: right;
+}
+a.tree-anchor:hover {
+  text-decoration: none;
+}
+a.tree-anchor .node.node-open:before {
+  content: "\e118";
+}
+a.tree-anchor .node.node-close:before {
+  content: "\e117";
+}
+span.tree-anchor {
+  width: 10px;
+}
+.tree-anchor {
+  display: inline-block;
+  margin: 0 5px 0 0;
+}
+.tree-separator {
+  margin-left: 20px;
+}
