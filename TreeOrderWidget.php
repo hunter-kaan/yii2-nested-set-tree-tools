@@ -78,18 +78,34 @@ class TreeOrderWidget extends InputWidget
 		throw new InvalidCallException('Missing ' . VarDumper::dumpAsString(NestedSetsBehavior::className()) . ' for model ' . VarDumper::dump($this->model->className()));
 	}
 
-	protected function checkModelTreeOrderTrait()
-	{
-		$uses = class_uses($this->model->className());
-		foreach ($uses as $className) {
-			if ($className === __NAMESPACE__ . '\TreeOrderModelTrait') {
-				return;
-			}
-		}
+    protected function checkModelTreeOrderTrait()
+    {
+        if ($this->hasTrait($this->model->className())) {
+            return;
+        }
 
-		throw new InvalidCallException('Missing ' . VarDumper::dumpAsString(__NAMESPACE__ . '\TreeOrderModelTrait') . ' for model ' . VarDumper::dump($this->model->className()));
+        $parents = class_parents($this->model->className());
+        foreach ($parents as $parentClassName) {
+            if ($this->hasTrait($parentClassName)) {
+                return;
+            }
+        }
 
-	}
+        throw new InvalidCallException('Missing ' . VarDumper::dumpAsString(__NAMESPACE__ . '\TreeOrderModelTrait') . ' for model ' . VarDumper::dump($this->model->className()));
+
+    }
+
+    protected function hasTrait($className)
+    {
+        $uses = class_uses($className);
+        foreach ($uses as $className) {
+            if ($className === __NAMESPACE__ . '\TreeOrderModelTrait') {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 	protected function initTree()
 	{
